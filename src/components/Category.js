@@ -42,33 +42,46 @@ class Category extends Component {
   render() {
     return (
       <div>
-        {this.state.categoryList.map((category, i) => {
-          return (
-            <li key={i}>
-              <a onClick={() => this.fetchCategoryDetails(category.short_name)}>
-                {' '}
-                {category.name} - ({category.short_name})
-              </a>
-            </li>
-          );
-        })}
-
-        <div>
-          <table id='details' hidden={this.state.categoryDetails.length > 0}>
-            <tr>
-              <th>Name</th>
-              <th>Description</th>
-            </tr>
-            {this.state.categoryDetails.length &&
-              this.state.categoryDetails.map(details => {
-                return (
-                  <tr key={details.id}>
-                    <td>{details.name}</td>
-                    <td>{details.description}</td>
-                  </tr>
-                );
-              })}
-          </table>
+        <h3>Menu Categories</h3>
+        <div className='container'>
+          <div className='category-list'>
+            {this.state.categoryList.map((category, i) => {
+              return (
+                <li key={i}>
+                  <a
+                    onClick={() =>
+                      this.fetchCategoryDetails(category.short_name)
+                    }
+                  >
+                    {' '}
+                    {category.name} - ({category.short_name})
+                  </a>
+                </li>
+              );
+            })}
+          </div>
+          <div>
+            <table
+              id='details'
+              className={
+                !this.state.categoryDetails.length > 0 ? 'hide' : 'show'
+              }
+            >
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+              {this.state.categoryDetails.length > 0 &&
+                this.state.categoryDetails.map(details => {
+                  return (
+                    <tr key={details.id}>
+                      <td>{details.name}</td>
+                      <td>{details.description}</td>
+                    </tr>
+                  );
+                })}
+            </table>
+          </div>
         </div>
       </div>
     );

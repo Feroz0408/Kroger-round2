@@ -1,3 +1,14 @@
+.container {
+  display: flex;
+}
+
+.category-list {
+  width: 40%;
+}
+
+li {
+  list-style-type: none;
+}
 #details {
   font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -24,4 +35,8 @@
   text-align: left;
   background-color: #4caf50;
   color: white;
+}
+
+.hide {
+  display: none;
 }
