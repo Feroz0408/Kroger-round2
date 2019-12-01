@@ -6,7 +6,8 @@ class Category extends Component {
     super();
     this.state = {
       categoryList: [],
-      categoryDetails: []
+      categoryDetails: [],
+      shortName: ''
     };
   }
 
@@ -24,16 +25,14 @@ class Category extends Component {
   }
 
   async fetchCategoryDetails(short_name) {
-    console.log(short_name);
     try {
       await fetch(
         `http://stream-restaurant-menu-svc.herokuapp.com/item?category=${short_name}`
       )
         .then(res => res.json())
         .then(data => {
-          this.setState({ categoryDetails: data });
+          this.setState({ categoryDetails: data, shortName: short_name });
         });
-      console.log(this.state.categoryDetails);
     } catch (err) {
       console.error(err.message);
     }
@@ -61,6 +60,13 @@ class Category extends Component {
             })}
           </div>
           <div>
+            <h2
+              className={
+                !this.state.categoryDetails.length > 0 ? 'hide' : 'show'
+              }
+            >
+              Items in Category: ({this.state.shortName})
+            </h2>
             <table
               id='details'
               className={
@@ -76,7 +82,9 @@ class Category extends Component {
                   return (
                     <tr key={details.id}>
                       <td>{details.name}</td>
-                      <td>{details.description}</td>
+                      <td>
+                        {details.description ? details.description : 'N/A'}
+                      </td>
                     </tr>
                   );
                 })}
