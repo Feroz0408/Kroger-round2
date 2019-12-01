@@ -18,6 +18,8 @@
 .env.test.local
 .env.production.local
 
+SKIP_PREFLIGHT_CHECK=true
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
