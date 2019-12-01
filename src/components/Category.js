@@ -18,7 +18,6 @@ class Category extends Component {
         .then(data => {
           this.setState({ categoryList: data });
         });
-      console.log(this.state.categoryList);
     } catch (err) {
       console.error(err.message);
     }
