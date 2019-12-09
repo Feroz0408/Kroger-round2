@@ -10,16 +10,18 @@ class CategoryList extends Component {
     this.state = {
       categoryList: [],
       categoryDetails: [],
+      isLoading: false,
       shortName: ''
     };
   }
 
   async componentDidMount() {
     try {
+      this.setState({ isLoading: true });
       await getAllCategories()
         .then(res => res.json())
         .then(data => {
-          this.setState({ categoryList: data });
+          this.setState({ categoryList: data, isLoading: false });
         });
     } catch (err) {
       console.error(err.message);
@@ -29,10 +31,15 @@ class CategoryList extends Component {
   async fetchCategoryDetails(short_name) {
     if (short_name !== this.state.shortName) {
       try {
+        this.setState({ isLoading: true });
         await getCategorDetails(short_name)
           .then(res => res.json())
           .then(data => {
-            this.setState({ categoryDetails: data, shortName: short_name });
+            this.setState({
+              categoryDetails: data,
+              shortName: short_name,
+              isLoading: false
+            });
           });
       } catch (err) {
         console.error(err.message);
@@ -41,12 +48,13 @@ class CategoryList extends Component {
   }
 
   render() {
-    if (this.state.categoryList.length === 0)
+    if (this.state.isLoading) {
       return (
-        <div className="spinner">
+        <div className={this.state.isLoading ? 'spinner' : 'hide'}>
           <img src={spinner} alt="loading" title="spinner" />
         </div>
       );
+    }
     return (
       <Fragment>
         <h2>Menu Categories</h2>
