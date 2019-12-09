@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import './CategoryList.css';
 import CategoryDetails from '../category-details/CategoryDetails';
 import { getAllCategories, getCategorDetails } from '../../api/Api';
+import spinner from '../../images/spinner.gif';
 
 class CategoryList extends Component {
   constructor() {
@@ -26,18 +27,26 @@ class CategoryList extends Component {
   }
 
   async fetchCategoryDetails(short_name) {
-    try {
-      await getCategorDetails(short_name)
-        .then(res => res.json())
-        .then(data => {
-          this.setState({ categoryDetails: data, shortName: short_name });
-        });
-    } catch (err) {
-      console.error(err.message);
+    if (short_name !== this.state.shortName) {
+      try {
+        await getCategorDetails(short_name)
+          .then(res => res.json())
+          .then(data => {
+            this.setState({ categoryDetails: data, shortName: short_name });
+          });
+      } catch (err) {
+        console.error(err.message);
+      }
     }
   }
 
   render() {
+    if (this.state.categoryList.length === 0)
+      return (
+        <div className="spinner">
+          <img src={spinner} alt="loading" title="spinner" />
+        </div>
+      );
     return (
       <Fragment>
         <h2>Menu Categories</h2>

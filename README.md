@@ -1,5 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Firebase link (hosted on firebase)
+
+- [Link to Project](https://kroger-c2a14.firebaseapp.com/)
+
+- Click Load unsafe scripts.
+  ![](./src/images/firebaseInstructions.png)
+
 ## Available Scripts
 
 In the project directory, you can run:

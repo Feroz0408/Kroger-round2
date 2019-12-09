@@ -11,15 +11,14 @@ const CategoryDetails = props => {
             <th className="table-head">Name</th>
             <th>Description</th>
           </tr>
-          {props.categoryDetails.length > 0 &&
-            props.categoryDetails.map(details => {
-              return (
-                <tr key={details.id}>
-                  <td>{details.name}</td>
-                  <td>{!!details.description ? details.description : 'N/A'}</td>
-                </tr>
-              );
-            })}
+          {props.categoryDetails.map(details => {
+            return (
+              <tr key={details.id}>
+                <td>{details.name}</td>
+                <td>{!!details.description ? details.description : 'N/A'}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

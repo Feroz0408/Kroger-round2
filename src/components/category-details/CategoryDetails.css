@@ -1,3 +1,12 @@
+.hide {
+  display: none;
+}
+
+.show {
+  width: 100%;
+  margin-right: 2%;
+}
+
 #details {
   border-collapse: collapse;
   width: 100%;
@@ -27,13 +36,4 @@
   text-align: left;
   background-color: #051e34;
   color: white;
-}
-
-.hide {
-  display: none;
-}
-
-.show {
-  width: 100%;
-  margin-right: 2%;
 }
