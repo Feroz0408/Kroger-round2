@@ -1,0 +1,27 @@
+h2 {
+  padding-left: 2%;
+}
+.container {
+  display: flex;
+}
+
+.category-list {
+  border: 2px solid #051e34;
+  margin: 0 2%;
+}
+
+.list-item {
+  min-width: 200px;
+  padding: 22px 20px;
+  border: 1px solid #051e34;
+  height: auto;
+}
+
+.list-item {
+  list-style-type: none;
+  cursor: pointer;
+}
+.list-item:hover {
+  background: #051e34;
+  color: white;
+}

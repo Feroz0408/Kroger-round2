@@ -1,19 +1,10 @@
-.container {
-  display: flex;
-}
-
-.category-list {
-  width: 40%;
-  padding: 2%;
-}
-
-li {
-  list-style-type: none;
-}
 #details {
-  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
+}
+
+.table-head {
+  width: 30%;
 }
 
 #details td,
@@ -34,10 +25,15 @@ li {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4caf50;
+  background-color: #051e34;
   color: white;
 }
 
 .hide {
   display: none;
+}
+
+.show {
+  width: 100%;
+  margin-right: 2%;
 }
